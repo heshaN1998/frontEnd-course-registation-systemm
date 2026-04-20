@@ -1,5 +1,15 @@
 import Table from 'react-bootstrap/Table';
+import { getCourseMaterialData } from '../service/CourseMaterialService';
+import { useEffect } from 'react';
 export const CourseMaterial=()=>{
+    useEffect(()=>{
+        //console.log("Component Loaded....");
+        const loadData=async()=>{
+            const importedData=await getCourseMaterialData();
+            console.log(importedData)
+        };
+        loadData();
+    },)
     return(
         <>
         <Table striped bordered hover>
@@ -20,7 +30,7 @@ export const CourseMaterial=()=>{
           <td>Otto</td>
           <td>@mdo</td>
           <td>Otto</td>
-          <td>@mdo</td>
+          <td>@mdo</td> 
         </tr>
        
       </tbody>
