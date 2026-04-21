@@ -9,17 +9,19 @@ export const CourseMaterial=()=>{
         "Material Type",
         "Material",
         "Upload At",
-        "Course Id"];
+        "Course Id",
+        "Option"
+                                ];
     }
 
-    const[tblData,settblData]=useState<CourseMaterialModel | null> (null)
-
+    //const[tblData,settblData]=useState<CourseMaterialModel | null> (null)
+    const [ material,setMaterial ] =useState<CourseMaterialModel []>([])
     useEffect(()=>{
         //console.log("Component Loaded....");
         const loadData=async()=>{
             const importedData=await getCourseMaterialData();
             console.log(importedData)
-            settblData(importedData)
+            setMaterial(importedData); 
         };
         loadData();
     },[])
@@ -35,14 +37,32 @@ export const CourseMaterial=()=>{
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>@mdo</td> 
-        </tr>
+        {material.map((mat,index)=>(
+            <tr key={index}>
+                <td>
+                    {mat.materialId}
+                </td>
+                <td>
+                    {mat.fileName}
+                </td>
+                <td>
+
+                    <img src="data:image/png;base64,${mat.material}" alt="course material" style={{width:"80px",height:"auto"}}/>
+                </td>
+                <td>
+                    {mat.materialType}
+                </td>
+                <td>
+                    {mat.uploadAt}
+                </td>
+                <td>
+                    {mat.courseId}
+                </td>
+                <td>
+                    <button className="btn-warning" style={{marginRight:"10px"}}>upDate</button>
+                </td>
+            </tr>
+        ))}
        
       </tbody>
     </Table></>
