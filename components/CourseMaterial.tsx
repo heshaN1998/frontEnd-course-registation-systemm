@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-import { getCourseMaterialData } from '../service/CourseMaterialService';
+import { getCourseMaterialData,updateCourseMaterialData } from '../service/CourseMaterialService';
 import { useEffect, useState } from 'react';
 import { CourseMaterialModel } from '../model/CourseMaterialModel';
 import { CourseMaterialEdit } from './CourseMaterialEdit';
@@ -17,7 +17,10 @@ export const CourseMaterial=()=>{
     
 
     //const[tblData,settblData]=useState<CourseMaterialModel | null> (null)
-    const [ material,setMaterial ] =useState<CourseMaterialModel []>([])
+    
+const [ material,setMaterial ] =useState<CourseMaterialModel []>([])
+const [showEditForm,setShowEditForm] =useState(false);   
+const [selectedRow,setSelectedRow]=useState <CourseMaterialModel | null> (null);
     useEffect(()=>{
         //console.log("Component Loaded....");
         const loadData=async()=>{
@@ -29,7 +32,12 @@ export const CourseMaterial=()=>{
     },[])
 
     const handleOnEdit=(mat:CourseMaterialModel)=>{
-        console.log(mat)
+        setShowEditForm(true)
+        setSelectedRow(mat)
+    }
+    //after editing
+    const handleOnUpdate=()=>{
+
     }
     
     return(
@@ -75,6 +83,14 @@ export const CourseMaterial=()=>{
        
       </tbody>
     </Table>
+    {/*ss*/}
+    <CourseMaterialEdit
+    show={showEditForm}
+    selectedRaw={selectedRow}
+    handleOnClose={()=>setShowEditForm(false)}
+    updateCourseMaterial={updateCourseMaterialData}
+    handleOnUpdate={}
+    />
         </>
     );
     
