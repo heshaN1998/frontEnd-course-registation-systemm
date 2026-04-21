@@ -1,15 +1,9 @@
 import Table from 'react-bootstrap/Table';
 import { getCourseMaterialData } from '../service/CourseMaterialService';
 import { useEffect, useState } from 'react';
+import { CourseMaterialModel } from '../model/CourseMaterialModel';
+import { CourseMaterialEdit } from './CourseMaterialEdit';
 
-interface CourseMaterialModel{
-    materialId:string;
-    fileName:string;
-    materialType:string;
-    material:File|null;
-    uploadAt:string;
-    courseId:string;
-}
 export const CourseMaterial=()=>{
     const tblHeaders : string[]=[
         "Material ID",
@@ -29,10 +23,15 @@ export const CourseMaterial=()=>{
         const loadData=async()=>{
             const importedData=await getCourseMaterialData();
             console.log(importedData)
-            //setMaterial(importedData)
+            setMaterial(importedData)
         };
         loadData();
     },[])
+
+    const handleOnEdit=(mat:CourseMaterialModel)=>{
+        console.log(mat)
+    }
+    
     return(
         <>
         <Table striped bordered hover>
@@ -50,16 +49,18 @@ export const CourseMaterial=()=>{
                 <td>
                     {mat.materialId}
                 </td>
+            
                 <td>
                     {mat.fileName}
                 </td>
                 <td>
-
-                    <img src={"data:image/png;base64,${mat.material}"} alt="course material" style={{width:"80px",height:"auto"}}/>
-                </td>
-                <td>
                     {mat.materialType}
                 </td>
+                <td>
+
+                    <img src={`data:image/png;base64,${mat.material}`} alt="course material" style={{width:"80px",height:"auto"}}/>
+                </td>
+                
                 <td>
                     {mat.uploadAt}
                 </td>
@@ -67,13 +68,14 @@ export const CourseMaterial=()=>{
                     {mat.courseId}
                 </td>
                 <td>
-                    <button className="btn-warning" style={{marginRight:"10px"}}>upDate</button>
+                    <button className="btn-warning" onClick={()=>handleOnEdit(mat)} style={{marginRight:"10px"}}>upDate</button>
                 </td>
             </tr>
         ))}
        
       </tbody>
-    </Table></>
+    </Table>
+        </>
     );
     
 }
