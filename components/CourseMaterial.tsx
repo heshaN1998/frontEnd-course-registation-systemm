@@ -2,6 +2,14 @@ import Table from 'react-bootstrap/Table';
 import { getCourseMaterialData } from '../service/CourseMaterialService';
 import { useEffect, useState } from 'react';
 
+interface CourseMaterialModel{
+    materialId:string;
+    fileName:string;
+    materialType:string;
+    material:File|null;
+    uploadAt:string;
+    courseId:string;
+}
 export const CourseMaterial=()=>{
     const tblHeaders : string[]=[
         "Material ID",
@@ -12,7 +20,7 @@ export const CourseMaterial=()=>{
         "Course Id",
         "Option"
                                 ];
-    }
+    
 
     //const[tblData,settblData]=useState<CourseMaterialModel | null> (null)
     const [ material,setMaterial ] =useState<CourseMaterialModel []>([])
@@ -21,7 +29,7 @@ export const CourseMaterial=()=>{
         const loadData=async()=>{
             const importedData=await getCourseMaterialData();
             console.log(importedData)
-            setMaterial(importedData); 
+            //setMaterial(importedData)
         };
         loadData();
     },[])
@@ -30,8 +38,8 @@ export const CourseMaterial=()=>{
         <Table striped bordered hover>
       <thead>
         <tr>
-          {
-          tblHeaders.map((headings,index)=>(
+          
+          {tblHeaders.map((headings,index)=>(
             <th key={index}>{headings}</th>
           ))}
         </tr>
@@ -47,7 +55,7 @@ export const CourseMaterial=()=>{
                 </td>
                 <td>
 
-                    <img src="data:image/png;base64,${mat.material}" alt="course material" style={{width:"80px",height:"auto"}}/>
+                    <img src={"data:image/png;base64,${mat.material}"} alt="course material" style={{width:"80px",height:"auto"}}/>
                 </td>
                 <td>
                     {mat.materialType}
@@ -69,3 +77,4 @@ export const CourseMaterial=()=>{
     );
     
 }
+
