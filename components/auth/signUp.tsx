@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
 import { Prev } from "react-bootstrap/esm/PageItem";
+import { Interface } from "readline";
 
 export const SignUp = () => {
     interface SignUp{
@@ -13,7 +14,7 @@ export const SignUp = () => {
     }
 
     //state handle
-    const [usr,setUser]=useState<SignUp>({
+    const [user,setUser]=useState<SignUp>({
         firstName:"",
         lastName:"",
         email:"",
@@ -76,8 +77,8 @@ export const SignUp = () => {
             placeholder="Enter Password"
           />
         </Form.Group>
-            <button Variant="success" type="submit">Sign Up</button>
-            <button Variant="danger" type="reset">Reset</button>
+            <button variant="success" type="submit">Sign Up</button>
+           
       </Form>
     </>
   );
