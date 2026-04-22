@@ -11,7 +11,11 @@ console.error(err);
 }
 export const updateCourseMaterialData=async (material:FormData)=>{
     try{
-        await axios.patch(`${baseURL}`,material)
+        await axios.patch(`${baseURL}`,material,{
+            headers:{
+                "Content-Type":"multypart/form/data"
+            }
+        })
     }catch(er){
         console.log(er)
     }
