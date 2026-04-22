@@ -1,6 +1,6 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import { CourseMaterialModel } from "../model/CourseMaterialModel";
+import { CourseMaterialModel } from "../../model/CourseMaterialModel";
 
 interface CourseMaterialEditProp {
   show: boolean;

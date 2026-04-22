@@ -1,7 +1,7 @@
 import Table from 'react-bootstrap/Table';
-import { getCourseMaterialData,updateCourseMaterialData } from '../service/CourseMaterialService';
+import { getCourseMaterialData,updateCourseMaterialData } from '../../service/CourseMaterialService';
 import { useEffect, useState } from 'react';
-import { CourseMaterialModel } from '../model/CourseMaterialModel';
+import { CourseMaterialModel } from '../../model/CourseMaterialModel';
 import { CourseMaterialEdit } from './CourseMaterialEdit';
 
 export const CourseMaterial=()=>{

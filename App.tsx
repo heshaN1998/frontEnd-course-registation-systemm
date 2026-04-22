@@ -3,11 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import { NavBar } from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CourseMaterial } from './components/CourseMaterial';
+import { CourseMaterial } from './components/CourseMaterial/CourseMaterial';
 import { AJAX } from './Ajax';
 import { getCourseMaterialData } from './service/CourseMaterialService';
 import {BrowserRouter,Routes,Route} from "react-router";
-import { Course } from './components/Course';
+import { Course } from './components/Course/Course';
 function App() {
   return (
     <>

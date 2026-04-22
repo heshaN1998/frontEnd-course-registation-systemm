@@ -6,11 +6,12 @@ export const NavBar =()=>{
     return(<>
     <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand as={Link} to="/">Course</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">Home</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Course material</Nav.Link>
-            <Nav.Link as={Link} to="/">Students</Nav.Link>
-            <Nav.Link as={Link} to="/">Lectureres</Nav.Link>
+            <Nav.Link as={Link} to="/signin">Signin</Nav.Link>
+            <Nav.Link as={Link} to="/signup">Signin</Nav.Link>
+            <Nav.Link as={Link} to="/coursematerial">Course Material</Nav.Link>
+            <Nav.Link as={Link} to="/course">Course</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
