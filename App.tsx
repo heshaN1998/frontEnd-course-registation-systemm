@@ -6,12 +6,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { CourseMaterial } from './components/CourseMaterial';
 import { AJAX } from './Ajax';
 import { getCourseMaterialData } from './service/CourseMaterialService';
-
+import {BrowserRouter,Routes,Route} from "react-router";
+import { Course } from './components/Course';
 function App() {
   return (
     <>
-    <NavBar/>
-    <CourseMaterial/>
+    <BrowserRouter>
+      <NavBar/>
+        <Routes>
+          <Route path='/coursematerial' element={<CourseMaterial/>}/>
+          <Route path='/course' element={<Course/>}/>
+        </Routes>
+      </BrowserRouter>
+    {/*<CourseMaterial/>*/}
     
     </>
   );
