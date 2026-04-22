@@ -22,14 +22,15 @@ export const SignUp = () => {
         role:""
     })
     //form data handle
-    const handleOnChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+    const handleOnChange= async (e:React.ChangeEvent<HTMLInputElement>)=>{
         const {name,value}=e.target;
         setUser((Prev)=>({...Prev,[name]:value}))
     }
     //send sign update to nserver
     const handleOnSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
-        console.log();
+        const token=await SignUpProcess(user)
+        console.log(token);
     }
           return (
     <>
@@ -77,7 +78,7 @@ export const SignUp = () => {
             placeholder="Enter Password"
           />
         </Form.Group>
-            <button variant="success" type="submit">Sign Up</button>
+            <button variant="success" type="submit">Register</button>
            
       </Form>
     </>

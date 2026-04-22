@@ -13,14 +13,15 @@ export const SignIn = () => {
     password: "",
   });
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange =  (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit =async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(user);
+    const token=await SignInProcess(user)
+    console.log(token);
   };
 
   return (
