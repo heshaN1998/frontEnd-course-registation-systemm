@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useAuth } from "./AuthProvider";
+import { useNavigate } from "react-router";
 
 interface SignInModel {
   email: string;
   password: string;
 }
+const navigate=useNavigate()
 
 export const SignIn = () => {
   const [user, setUser] = useState<SignInModel>({
@@ -26,6 +28,7 @@ const {login}=useAuth();
     console.log(token);
     setUser({email:"",password:""})
     login(token)
+    navigate("/coursematerial")
   };
 
   return (

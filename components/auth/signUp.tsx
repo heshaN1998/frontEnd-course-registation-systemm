@@ -16,6 +16,7 @@ export const SignUp = () => {
     }
 
     //state handle
+    const navigate=useNavigate()
     const { login }=useAuth();
     const [user,setUser]=useState<SignUp>({
         firstName:"",
