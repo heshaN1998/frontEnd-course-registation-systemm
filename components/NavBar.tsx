@@ -9,7 +9,7 @@ export const NavBar =()=>{
           <Navbar.Brand as={Link} to="/">Home</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/signin">Signin</Nav.Link>
-            <Nav.Link as={Link} to="/signup">Signin</Nav.Link>
+            <Nav.Link as={Link} to="/register">Signin</Nav.Link>
             <Nav.Link as={Link} to="/coursematerial">Course Material</Nav.Link>
             <Nav.Link as={Link} to="/course">Course</Nav.Link>
           </Nav>
