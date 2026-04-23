@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
 import { Prev } from "react-bootstrap/esm/PageItem";
 import { Interface } from "readline";
+import { useAuth } from "./AuthProvider";
+import { useNavigate } from "react-router";
 
 export const SignUp = () => {
     interface SignUp{
@@ -14,6 +16,7 @@ export const SignUp = () => {
     }
 
     //state handle
+    const { login }=useAuth();
     const [user,setUser]=useState<SignUp>({
         firstName:"",
         lastName:"",
@@ -31,6 +34,7 @@ export const SignUp = () => {
         e.preventDefault();
         const token=await SignUpProcess(user)
         console.log(token);
+        login(token)
     }
           return (
     <>
